@@ -270,7 +270,7 @@ footer {
 
 /*Profile.jsx  */
 
-.addSkill{
+.Skills {
   height:30px;
   width:30px;
   border-radius: 50%;
@@ -282,7 +282,24 @@ footer {
   cursor:pointer;
 
 }
-
+.deleteSkill{
+  height:30px;
+  width:30px;
+  border-radius: 50%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  padding:0;
+  border:none;
+  cursor:pointer;
+}
 .teachSkillInput{
-  border-radius:45px;
+  border: solid 1px black;
+  border-radius:5px;
+}
+
+
+.backBtn{
+  font-size:10px;
+  padding-top: 10px;
 }

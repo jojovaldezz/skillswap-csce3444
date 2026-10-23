@@ -30,7 +30,7 @@ return (
         </span>
       ))}
     </div>
-    <Link to="/discover"> ← Back to Discover</Link>
+    <Link to="/discover" className="backBtn"> ← Back to Discover</Link>
   </section>
 
 );
