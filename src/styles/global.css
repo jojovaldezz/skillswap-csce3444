@@ -270,7 +270,7 @@ footer {
 
 /*Profile.jsx  */
 
-.addSkill{
+.Skills {
   height:30px;
   width:30px;
   border-radius: 50%;
@@ -282,34 +282,65 @@ footer {
   cursor:pointer;
 
 }
-
-.teachSkillInput{
-  border-radius:45px;
+.deleteSkill{
+  height:30px;
+  width:30px;
+  border-radius: 50%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  padding:0;
+  border:none;
+  cursor:pointer;
+}
+.teachSkillInput {
+  border: 1px solid black;
+  border-radius: 5px;
 }
 
-/* Disvover & Profile additions */
-.student { 
-  position: relative; 
+/* Discover & Profile additions */
+.student {
+  position: relative;
 }
-.student h3 a { 
-  color: inherit; text-decoration: none;
- }
-.student h3 a:hover { 
+
+.student h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.student h3 a:hover {
   text-decoration: underline;
- }
+}
+
 .student h3 a::after {
   content: "";
   position: absolute;
   inset: 0;
 }
+
 .student button {
   position: relative;
   z-index: 1;
 }
 
-a:focus-visible, button:focus-visible, .search:focus-visible {
+a:focus-visible,
+button:focus-visible,
+.search:focus-visible {
   outline: 3px solid #f2b705;
   outline-offset: 2px;
 }
-.back {color: #148a54; font-weight: 700; text-decoration: none; }
-.empty button { margin-top: 12px;}
+
+.back {
+  color: #148a54;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.empty button {
+  margin-top: 12px;
+}
+
+.backBtn {
+  font-size: 10px;
+  padding-top: 10px;
+}
