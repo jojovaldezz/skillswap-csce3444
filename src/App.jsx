@@ -5,7 +5,7 @@ import Discover from "./pages/Discover";
 import Messages from "./pages/Messages";
 import Profile from "./pages/Profile";
 import  StudentProfile  from "./pages/StudentProfile";
-
+import Sessions from "./pages/Sessions";
 
 export default function App() {
 
@@ -22,6 +22,7 @@ export default function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="*" element={<h1>Page not found</h1>} />
         <Route path="/students/:id" element={<StudentProfile />}  />
+        <Route path="/sessions" element={<Sessions />} />
       </Routes>
     </main>
     <footer>SkillSwap • Built for students, by students.</footer>
