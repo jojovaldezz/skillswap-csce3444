@@ -1,6 +1,5 @@
-import  {useState}  from  "react";
-import  { FontAwesomeIcon }  from  '@fortawesome/react-fontawesome';
-import  {faCirclePlus}  from  '@fortawesome/free-solid-svg-icons';
+import AddSkill from "../components/addSkill";
+
 
 export default function Profile() {
   return(
@@ -19,19 +18,12 @@ export default function Profile() {
         <h3>Skills I can teach</h3>
 
         <div className="chips">
-          
-          
-          <span className="chip">HTML/CSS</span>
-          <span className="chip">Figma</span>
-          <button type="button" className="addSkill">
-              <FontAwesomeIcon icon={faCirclePlus}/>
-          </button>
-          <input  type='text' classname="teachSkillInput"></input>
+        
+          <AddSkill/>
         </div>
         <h3>Skills I want to learn</h3>
         <div className="chips">
-          <span className="chip">React</span>
-          <span className="chip">Cloud Security</span>
+          <AddSkill/>
         </div>
       </div>
     </div>
