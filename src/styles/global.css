@@ -344,3 +344,12 @@ button:focus-visible,
   font-size: 10px;
   padding-top: 10px;
 }
+.match-details { flex-basis: 100%; border-top: 1px solid #e5eee7; padding-top: 12px; color: #16764a; }
+.match-details p { margin: 6px 0; }
+.skill-form { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.skill-form input { min-width: 0; max-width: 100%; padding: 10px; border: 1px solid #cbded1; border-radius: 8px; font: inherit; }
+.remove-skill { padding: 2px 6px; margin-left: 6px; background: transparent; color: #16764a; }
+.remove-skill:hover { color: white; }
+.skill-editor .chip { display: inline-flex; align-items: center; overflow-wrap: anywhere; }
+.match-details { overflow-wrap: anywhere; }
+input:focus-visible { outline: 3px solid #f2b705; outline-offset: 2px; }

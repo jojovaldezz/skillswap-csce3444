@@ -5,17 +5,20 @@ export const students = [
     name: "Justin Brooks",
     major: "Business • Senior",
     skills: ["Python", "Excel"],
+    wanted: ["JavaScript", "Figma"],
   },
   {
     id: 2,
     name: "Maya Rivera",
     major: "Computer Science • Junior",
     skills: ["React", "JavaScript"],
+    wanted: ["Python", "HTML/CSS"],
   },
   {
     id: 3,
     name: "Chris Taylor",
     major: "Design • Sophomore",
     skills: ["Figma", "UI Design"],
+    wanted: ["React", "Excel"],
   },
 ];

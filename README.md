@@ -1,6 +1,6 @@
 # SkillSwap — CSCE 3444
 
-Starter frontend for the SkillSwap campus peer-learning application. **Current functionality:** client-side routing, responsive UI, and mock-data skill/student search. **Not yet implemented:** authentication, database persistence, connection requests, messaging, sessions, and feedback. Buttons marked as placeholders are not completed features.
+Starter frontend for the SkillSwap campus peer-learning application. **Current functionality:** client-side routing, responsive UI, mock-data skill/student search, and skill matching with browser-saved profile skills. **Not yet implemented:** authentication, database persistence, connection requests, messaging, sessions, and feedback. Buttons marked as placeholders are not completed features.
 
 ## Setup
 1. Install Node.js (LTS recommended).
@@ -47,3 +47,10 @@ Implementation in Progress...
 
 ## Documentation
 - Software Requirements Specification (SRS)
+
+## Skill matching
+Add teaching and learning skills on My Profile. Home recommends matching students; Discover ranks all students and offers a Matches only filter. Cards explain which skills you can learn or teach. Mutual exchanges rank first, then total shared skills, learning matches, and student name. Matching compares whole skill names without case or extra whitespace; synonyms are not inferred.
+
+Profile skills are stored locally in this browser, not in Supabase or a user account. Student offers and learning goals remain mock data. Connection requests are still placeholders.
+
+Run matching tests with `node --test src/services/skillMatching.test.js` and verify production compilation with `npm run build`.

@@ -1,6 +1,6 @@
 import  {  Link  }  from  "react-router-dom";
 
-export default function StudentCard({ student }) {
+export default function StudentCard({ student, match }) {
   const { id, name = "Unnamed student", major, skills = [] } = student;
 
   return (
@@ -27,6 +27,11 @@ export default function StudentCard({ student }) {
         ))}
       </div>
     </div>
+    {match?.total > 0 && <div className="match-details">
+      <strong>{match.mutual ? "Mutual skill exchange" : match.canLearn.length ? "Can help you learn" : "You can help"}</strong>
+      {match.canLearn.length > 0 && <p>Learn: {match.canLearn.join(", ")}</p>}
+      {match.canTeach.length > 0 && <p>Teach: {match.canTeach.join(", ")}</p>}
+    </div>}
     <button
       type="button"
       onClick={() =>

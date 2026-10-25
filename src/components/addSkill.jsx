@@ -1,40 +1,31 @@
-import{useState}  from  'react';
-import  { FontAwesomeIcon }  from  '@fortawesome/react-fontawesome';
-import  {faCirclePlus, faTrashCan}  from  '@fortawesome/free-solid-svg-icons';
+import { useState } from 'react';
+import { normalizeSkill } from '../services/skillMatching';
 
-
-export default function AddSkill  (){
-    const [toggle, setToggle]  = useState(false);
-    const [skills,  setSkills]= useState(["HTML/CSS", "Javascript"]);
-    const [input, setInput] = useState("");
-    const [isDeleting, setIsDeleting] = useState(false);
-    
-    const handleKeyDown = (e) => {
-        if (e.key === 'Enter'){
-            const cleanedInput= input.trim()
-            if (cleanedInput === "" || skills.some((skill)=> skill.toLowerCase() === cleanedInput.toLowerCase())){return;}
-            setSkills([...skills, cleanedInput]);
-            setInput("");
-            setToggle(false);
-        }
+export default function AddSkill({ skills, onChange, label }) {
+  const [input, setInput] = useState('');
+  const [error, setError] = useState('');
+  function add(event) {
+    event.preventDefault();
+    const skill = input.trim().replace(/\s+/g, ' ');
+    if (!skill) { setError('Enter a skill.'); return; }
+    if (skills.some((item) => normalizeSkill(item) === normalizeSkill(skill))) {
+      setError('That skill is already listed.'); return;
     }
-    
-    const handleDelete = (skillToRemove) => {
-        if (!isDeleting){return}
-
-        setSkills(skills.filter((skill, index) => skill !== skillToRemove))
-    }
-    return(
-        <>
-        <button type="button" className="Skills" onClick={() => setToggle(!toggle)}>
-            <FontAwesomeIcon icon={faCirclePlus} />
-        </button>
-        <button type="button" className="deleteSkill" onClick={() => setIsDeleting(!isDeleting)}> 
-            <FontAwesomeIcon icon={faTrashCan} />
-        </button> 
-{/*!isDeleting makes this into a switch instead of a one way toggle it can toggle back and forth*/}
-        {toggle &&<input type="text" className="teachSkillInput" placeholder="type skill..." onKeyDown={handleKeyDown} onChange={(e) => setInput(e.target.value)}/>}
-        {skills.map((skill, index)=> (<span key={index} className="chip" onClick={() => handleDelete(skill) }>{isDeleting && "x "}{skill}</span>))}
-        </>
-    );
+    onChange([...skills, skill]); setInput(''); setError('');
+  }
+  return <div className="skill-editor">
+    <div className="chips">
+      {skills.map((skill) => <span className="chip" key={skill}>{skill}
+        <button className="remove-skill" type="button" aria-label={`Remove ${skill} from ${label}`}
+          onClick={() => onChange(skills.filter((item) => item !== skill))}>×</button>
+      </span>)}
+      {!skills.length && <p className="muted">No skills added yet.</p>}
+    </div>
+    <form onSubmit={add} className="skill-form">
+      <input aria-label={`Add skill to ${label}`} placeholder="e.g. Python" value={input}
+        maxLength={80} onChange={(event) => { setInput(event.target.value); setError(''); }} />
+      <button type="submit">Add skill</button>
+    </form>
+    {error && <p role="alert">{error}</p>}
+  </div>;
 }

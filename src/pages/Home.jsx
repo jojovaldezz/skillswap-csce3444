@@ -1,8 +1,10 @@
+import { rankStudents } from "../services/skillMatching";
 import { Link } from "react-router-dom";
 import StudentCard from "../components/StudentCard";
 import { students } from "../services/mockData";
 
-export default function Home() {
+export default function Home({ profile }) {
+  const matches = rankStudents(students, profile).filter((match) => match.total > 0);
   return(
   <>
     <section className="hero">
@@ -28,12 +30,15 @@ export default function Home() {
     </section>
     <section>
       <div className="section-head">
-        <h2>Recommended connections</h2>
+        <h2>Recommended skill matches</h2>
         <Link to="/discover">View all →</Link>
       </div>
+      <p className="muted">Based on your profile skills. Mutual exchanges appear first.</p>
+      {!profile.wanted.length && <p><Link className="back" to="/profile">Add skills you want to learn to find teachers →</Link></p>}
+      {!matches.length && <div className="card empty"><h3>No skill matches yet</h3><p>Try adding other skills to your profile.</p><Link className="back" to="/profile">Edit my skills →</Link></div>}
       <div className="student-grid">
-        {students.slice(0, 2).map((s) => (
-          <StudentCard key={s.id} student={s} />
+        {matches.slice(0, 2).map((match) => (
+          <StudentCard key={match.student.id} student={match.student} match={match} />
         ))}
       </div>
     </section>
